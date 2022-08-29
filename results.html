@@ -1,12 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">                                                       
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>liveWIRE</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <!-- jQuery UI <link> tag -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
 </head>
 <body>
+<style>
+    body {
+
+      background-image: url('mahdis-mousavi-5BrLjgDAd-c-unsplash.jpg');
+
+    }
+    </style>
+    <div class="jumbotron" style="background-image: url('mahdis-mousavi-5BrLjgDAd-c-unsplash.jpg');
+        background-size: 100%; margin-top: 50px;
+        text-align: center; ">
+   
+        <div class="container for-about">    
+        <h1>liveWIRE</h1>
+
+        <p style="color:white">liveMusic Where YOU are!</p>
+
+       
+
+        <!-- <h2>liveMusic Where YOU are!</h2> -->
+
+        </div>
+
+    </div>
+
     
+<form>
+    <div class="input-group mb-3" id="search-form">
+
+        <div class="input-group-prepend">
+
+          <label class="input-group-text" for="inputGroupSelect01">Where:</label>
+
+        </div>
+
+        <select class="custom-select" id="location-input">
+
+          <option selected></option>
+
+          <option value="1">Boston</option>
+          <option value="2">Columbus</option>
+          <option value="3">Los Angeles</option>
+          <option value="4">Miami</option>
+          <option value="5">New York</option>
+          <option value="6">Pittsburgh</option>
+          <option value="7">San Francisco</option>
+
+        </select>
+
+      </div>
+
+ 
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" id="format-input"  for="inputGroupSelect02">When:</label>
+        </div>
+            <div class="form-group row">
+               <!--  <label for="date" class="col-sm-12 col-form-label">Date: </label> -->
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" id="datepicker" autocomplete="off" />
+                </div>
+
+        <!-- </select> -->
+
+      </div>
+
+
+ 
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+
+          <label class="input-group-text" id="venue-input" for="inputGroupSelect04">Venue:</label>
+
+        </div>
+
+        <select class="custom-select" id="inputGroupSelect04">
+
+          <option selected></option>
+
+          <option value="1">Indoor</option>
+
+          <option value="2">Outdoor</option>
+
+          <option value="3">Both</option>
+
+        </select>
+
+
+      </div>      
+
+      </div>
+      <button type="submit" class="btn btn-info" value="Submit">Submit</button>
+</form>
 </body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<!-- jQuery UI <script> tag -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./script.js"></script>
+
 </html>

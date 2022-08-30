@@ -21,14 +21,25 @@
 
     </nav>
 
-    <div class="container">
+    <div class="container image ">
         <div>
-            <h1 class="mt-5">See what shows are coming to your city!</h1>
-            <input class="input-box mt-3 w-75 mb-3" placeholder="Enter city here" id="input-text">
+            <!-- ?\\<h1 class="mt-5">See what shows are coming to your city!</h1> -->
+            <!-- <input class="input-box mt-3 w-75 mb-3"  -->
         </div>
+        <div class="jumbotron mt-3">
+            <h1 class="display-4 text-white ">Find a Show in Your City!</h1>
+                <!-- <button class="search-button" id="searchBtn">Search</button> -->
+            <nav class="search-button navbar-light bg-light" id="searchBtn">
+                <form class="form-inline">
+                  <input class="form-control col-sm-6" type="search" placeholder="Enter City Here" aria-label="Search" id="input-text">
+                  <input class="form-control col-sm-6" type="search" placeholder="Date" aria-label="Date" id="date-text">
+                  <button class="btn btn-outline-success align-items-center col-sm-12" type="submit">Search</button>
+                </form>
+              </nav>
+        </div>
+          </div>
         <div class="search-div">
-            <button class="search-button" id="searchBtn">Search</button>
-        </div>
+
     </div>
 
     <div id="results" class="showConcerts"></div>

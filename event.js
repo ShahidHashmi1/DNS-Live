@@ -1,8 +1,12 @@
 var resultsContainer = document.getElementById("results");
 var searchBtn = document.getElementById("searchBtn");
 var APIkey = `SjdErjacka4IpkCfwvFaKPS8ysvInbVL`
-// cityName = document.getElementById("input-text").value;
+// youtube API global variables below
+var button = document.getElementById("btn");
+var search = document.getElementById("artistInfo");
+var youtubeArea =document.getElementById("youtubeVid");
 
+// ticketmaster api and functions below
 function getAPI() {
     var cityName = document.querySelector("#input-text").value
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=${cityName}&apikey=${APIkey}`)
@@ -10,17 +14,16 @@ function getAPI() {
         .then(function(response) {
             return response.json()
         })
-        .then(function(data) {
-            console.log(data);
+        .then(function(tickMast) {
+            console.log(tickMast);
             // nest second API call here since their order is sequential
             for(var i = 0; i < data._embedded.events.length; i++) {
-                setEvent(data, i)
+                setEvent(tickMast, i)
                 
             }
         }) 
 }
-// fake
-function setEvent(data, i) {
+function setEvent(tickMast, i) {
     // title
     var eventCard = document.createElement("div")
     eventCard.setAttribute('class', 'text-center')
@@ -28,7 +31,7 @@ function setEvent(data, i) {
     eventCard.setAttribute('id', i)
     resultsContainer.append(eventCard)
     var eventTitle = document.createElement("h2") 
-    eventTitle.textContent = [data._embedded.events[i].name]
+    eventTitle.textContent = [tickMast._embedded.events[i].name]
     eventCard.append(eventTitle);
     // card image
     var cardImage = document.createElement("img")
@@ -55,11 +58,71 @@ function setEvent(data, i) {
     eventCard.append(venueName);
     
 }
+// ticketmaster api and functions above
 
-// function showResults() {
-//     var resultsPage = "./results.html"
-//     location.assign(resultsPage);
-// }
 
-// searchBtn.addEventListener("click", showResults);
+// youtube api and functions below
+var searchArea = function(event){
+    event.preventDefault();
+        var artistSearch = search.value.trim();
+        console.log(artistSearch);
+ getArtist(artistSearch)   
+}
+
+function getArtist(artistSearch){
+    var requestUrl = "https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistSearch;
+    var artistId;
+
+    fetch(requestUrl)
+    .then(function(response){
+        console.log(response)
+        return response.json();
+    })
+
+    .then(function(data){
+        console.log(data)
+         artistId = data.artists[0].idArtist
+         getMusicVideo(artistId);
+    
+    })
+}
+// fake
+function getMusicVideo(param) {
+    var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`// + param;
+    //console.log(param);
+    fetch(requesturl2)
+    .then(function(response){
+        console.log(response)
+        return response.json();
+        
+    })
+
+    .then(function(data){
+        console.log(data)
+
+        var youtubeVid =document.createElement("p");
+        var youtubeLink =document.createElement("a");
+        youtubeLink.setAttribute('href',data.mvids[0].strMusicVid)
+        youtubeLink.setAttribute('target', '_blank')
+        youtubeLink.innerHTML = data.mvids[0].strMusicVid;
+        youtubeVid.textContent = "check out this youtube video for more info!";
+        youtubeArea.append(youtubeVid);
+        youtubeArea.append(youtubeLink);
+        
+        return;
+        
+
+        
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+}
+getMusicVideo();
+// youtube API and functions above
+
+// youtube API and button click 
+button.addEventListener("click", searchArea)
+
+// ticketmaster API and button click
 searchBtn.addEventListener("click", getAPI);

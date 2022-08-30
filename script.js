@@ -1,13 +1,14 @@
 var dateInputEl = $('#datepicker');
-var searchFormEl = document.querySelector('#search-form');
+var citySearchEl = document.querySelector('#input-text');
+var searchBtn = document.querySelector('#searchBtn')
 
 // Datepicker widget
-$(function () {
-    $('#datepicker').datepicker({
-      changeMonth: true,
-      changeYear: true,
-    });
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#anim" ).on( "change", function() {
+    $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
   });
+} );
 
 // fake
 
@@ -15,17 +16,17 @@ function handleSearchFormSubmit(event) {
   event.preventDefault();
 
   var searchInputVal = document.querySelector('#location-input').value;
-  var formatInputVal = document.querySelector('#format-input').value;
-  var venueInputVal = document.querySelector('#venue-input').value;
+  // var formatInputVal = document.querySelector('#format-input').value;
+  // var venueInputVal = document.querySelector('#venue-input').value;
 
   if (!searchInputVal) {
     console.error('You need a search input value!');
     return;
   }
 
-  var queryString = './results.html?q=' + searchInputVal + '&format=' + formatInputVal + '&format=' +venueInputVal;
+  var queryString = './results.html?q=' + searchInputVal + '&date=' + dateInputEl
 
   location.assign(queryString);
 }
 
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+searchBtn.addEventListener('submit', handleSearchFormSubmit);

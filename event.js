@@ -1,7 +1,6 @@
-resultsContainer = document.getElementById("results");
-searchBtn = document.getElementById("searchBtn");
-APIkey = `SjdErjacka4IpkCfwvFaKPS8ysvInbVL`
-tmURL = `https://app.ticketmaster.com/{package}/{version}/{resource}.json?apikey=**{APIkey}`
+var resultsContainer = document.getElementById("results");
+var searchBtn = document.getElementById("searchBtn");
+var APIkey = `SjdErjacka4IpkCfwvFaKPS8ysvInbVL`
 // cityName = document.getElementById("input-text").value;
 
 function getAPI() {
@@ -20,7 +19,7 @@ function getAPI() {
             }
         }) 
 }
-
+// fake
 function setEvent(data, i) {
     // title
     var eventCard = document.createElement("div")
@@ -57,4 +56,10 @@ function setEvent(data, i) {
     
 }
 
+// function showResults() {
+//     var resultsPage = "./results.html"
+//     location.assign(resultsPage);
+// }
+
+// searchBtn.addEventListener("click", showResults);
 searchBtn.addEventListener("click", getAPI);

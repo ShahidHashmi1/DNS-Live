@@ -1,17 +1,35 @@
 body {
-    background-color: #3059ff;
-    color: #ffff;
+    background-color: #8a307f;
+    color: #79a7d3;
 }
 
 nav {
+    color: #79a7d3;
     width: 100%;
     max-width: 100%;
-    background-color: rgba(106, 45, 106, 0.636);
-    border: white;
+    background-color: rgb(11, 1, 1);
+    border: #79a7d3;
     border-radius: 5px;
     height: 75px;
     display: flex;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div h2 {
+    color:black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+    color:black; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+}
+
+a {
+    font-weight: bold;
+    font-size: 25px;
 }
 
 footer {
@@ -23,12 +41,14 @@ footer {
     height: 150px;
     display: flex;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
 nav h1 {
-    color: white;
+    color: #79a7d3;
     text-decoration: dotted;
     text-decoration-color: #ffff;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ui-datepicker-header,
@@ -72,4 +92,23 @@ nav h1 {
     background-size: 1000px;
     width: 1000px;
     height: 500px;
+    font-family: 'Open Sans', sans-serif;
+    color: #6883bc;
 }
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+  }
+
+ .linebreak {
+    color: black;
+ }
+
+ h1 {
+    color: #6883bc;
+ }

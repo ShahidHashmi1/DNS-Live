@@ -10,6 +10,11 @@ var searchBtn = document.querySelector('#searchBtn')
 //   });
 // } );
 
+// accordian
+$( function() {
+  $( "#accordion" ).accordion();
+} );
+
 var handleSearchFormSubmit = function (event) {
   event.preventDefault();
   // console.log(document.getElementById("input-text").value)

@@ -3,14 +3,17 @@ var citySearchEl = document.querySelector('#input-text');
 var searchBtn = document.querySelector('#searchBtn')
 
 // Datepicker widget
-$( function() {
-  $( "#datepicker" ).datepicker();
-  $( "#anim" ).on( "change", function() {
-    $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
-  });
-} );
+// $( function() {
+//   $( "#datepicker" ).datepicker();
+//   $( "#anim" ).on( "change", function() {
+//     $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+//   });
+// } );
 
-// fake
+// accordian
+$( function() {
+  $( "#accordion" ).accordion();
+} );
 
 var handleSearchFormSubmit = function (event) {
   event.preventDefault();
@@ -18,7 +21,7 @@ var handleSearchFormSubmit = function (event) {
 
   var searchInputVal = document.getElementById('input-text').value
   
-  var dateInputVal = document.getElementById('datepicker').value
+  // var dateInputVal = document.getElementById('datepicker').value
   
 
   console.log(searchInputVal)
@@ -30,7 +33,7 @@ var handleSearchFormSubmit = function (event) {
     return;
   }
   localStorage.setItem('input', JSON.stringify(searchInputVal));
-  var queryString = './results.html?q=' + searchInputVal + '&date=' + dateInputVal
+  var queryString = './results.html?q=' + searchInputVal
 
   location.assign(queryString);
 

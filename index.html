@@ -29,11 +29,11 @@
         <div class="jumbotron mt-3">
             <h1 class="display-4 text-white ">Find a Show in Your City!</h1>
                 <!-- <button class="search-button" id="searchBtn">Search</button> -->
-            <nav class="search-button navbar-light bg-light" id="searchBtn">
+            <nav class="search-button navbar-light bg-light">
                 <form class="form-inline">
                   <input class="form-control col-sm-6" type="search" placeholder="Enter City Here" aria-label="Search" id="input-text">
                   <input class="form-control col-sm-6" type="search" placeholder="Date" aria-label="Date" id="date-text">
-                  <button class="btn btn-outline-success align-items-center col-sm-12" type="submit">Search</button>
+                  <button class="btn btn-outline-success align-items-center col-sm-12" id="searchBtn" type="submit">Search</button>
                 </form>
               </nav>
         </div>
@@ -44,16 +44,19 @@
 
     <div id="results" class="showConcerts"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
     <!-- <script src="./youtube.js"></script> -->
     <script src="./script.js"></script>
-    <script src="./event.js"></script>
+    <!-- <script src="./event.js"></script> -->
 </body>
 
 </html>

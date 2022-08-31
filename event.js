@@ -5,16 +5,21 @@ var APIkey = `SjdErjacka4IpkCfwvFaKPS8ysvInbVL`;
 // var button = document.getElementById("btn");
 //var search = document.getElementById("artistInfo");
 var youtubeArea =document.getElementById("youtubeVid");
+var artistName;
 
-function init() {
+function init(event) {
+    event.preventDefault();
+
     getAPI();
-    getArtist();
+    console.log("here you go!")
+    // getArtist();
 }
 
 // ticketmaster api and functions below
-function getAPI(event) {
-    event.preventDefault();
-    var cityName = document.querySelector("#input-text").value
+function getAPI() {
+   
+    var cityName = JSON.parse(localStorage.getItem('input'));
+    //var cityName = document.querySelector("#input-text").value
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=${cityName}&apikey=${APIkey}`)
 
         .then(function(response) {
@@ -29,6 +34,7 @@ function getAPI(event) {
             }
         }) 
 }
+getAPI();
 
 function setEvent(data, i) {
     // title
@@ -56,19 +62,20 @@ function setEvent(data, i) {
     eventCard.append(showDate);
     // venue name & ticket link with artist name plain
     var venueName = document.createElement("a")
-    var artistName = data._embedded.events[i]._embedded.attractions[0].name
+    artistName = data._embedded.events[i]._embedded.attractions[i].name
     venueName.setAttribute('class', 'text-center')
     var ticketURL = data._embedded.events[i].url?data._embedded.events[i].url:""
     venueName.setAttribute('href', `${ticketURL}`)
     venueName.setAttribute('target', '_blank')
     venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for " + artistName + " here!"
     eventCard.append(venueName);
-   // function getArtist(artistName) {
 
-
-   // }
-    
+    getMusicVideo(eventCard)
+    getArtist(artistName)
+   
 }
+
+
 // ticketmaster api and functions above
 
 
@@ -98,7 +105,7 @@ function getArtist(artistName){
     })
 }
 // fake
-function getMusicVideo(param) {
+function getMusicVideo(param, i) {
     var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`// + param;
     //console.log(param);
     fetch(requesturl2)
@@ -113,12 +120,12 @@ function getMusicVideo(param) {
 
         var youtubeVid =document.createElement("p");
         var youtubeLink =document.createElement("a");
-        youtubeLink.setAttribute('href',data.mvids[0].strMusicVid)
+        youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
         youtubeLink.innerHTML = data.mvids[0].strMusicVid;
         youtubeVid.textContent = "check out this youtube video for more info!";
-        youtubeArea.append(youtubeVid);
-        youtubeArea.append(youtubeLink);
+        resultsContainer[i].append(youtubeVid);
+        resultsContainer[i].append(youtubeLink);
         
         return;
         

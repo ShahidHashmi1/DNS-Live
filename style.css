@@ -1,11 +1,70 @@
-:root {
-    background-color: #3059ff;
-}
-
-#input-text,
-#date-text {
+body {
     background-color: #3059ff;
     color: #ffff;
+}
+
+nav {
+    width: 100%;
+    max-width: 100%;
+    background-color: rgba(106, 45, 106, 0.636);
+    border: white;
+    border-radius: 5px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    width: 100%;
+    max-width: 100%;
+    background-color: rgba(106, 45, 106, 0.636);
+    border: white;
+    border-radius: 5px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+nav h1 {
+    color: white;
+    text-decoration: dotted;
+    text-decoration-color: #ffff;
+}
+
+.ui-datepicker-header,
+.ui-widget-header,
+.ui-helper-clearfix,
+.ui-corner-all {
+    color: #3059ff;
+    background-color: #ffff;
+    border: #3059ff;
+    border-radius: 4px;
+}
+
+/* #datepicker {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+} */
+
+.musicNotes {
+    background-color: rgba(106, 45, 106, 0.636);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
 }
 
 .jumbotron {

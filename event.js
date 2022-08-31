@@ -6,6 +6,7 @@ var APIkey = `SjdErjacka4IpkCfwvFaKPS8ysvInbVL`;
 //var search = document.getElementById("artistInfo");
 var youtubeArea =document.getElementById("youtubeVid");
 var artistName;
+var musicVideoReturn;
 
 function init(event) {
     event.preventDefault();
@@ -28,13 +29,14 @@ function getAPI() {
         .then(function(data) {
             console.log(data);
             // nest second API call here since their order is sequential
-            for(var i = 0; i < data._embedded.events.length; i++) {
+            var length = (data._embedded.events.length > 10) ? 10 : data._embedded.events.length
+            for(var i = 0; i < length; i++) {
                 setEvent(data, i)
                 
             }
         }) 
 }
-getAPI();
+
 
 function setEvent(data, i) {
     // title
@@ -62,21 +64,26 @@ function setEvent(data, i) {
     eventCard.append(showDate);
     // venue name & ticket link with artist name plain
     var venueName = document.createElement("a")
-    artistName = data._embedded.events[i]._embedded.attractions[i].name
+    console.log(data._embedded.events[i])
+    
     venueName.setAttribute('class', 'text-center')
     var ticketURL = data._embedded.events[i].url?data._embedded.events[i].url:""
     venueName.setAttribute('href', `${ticketURL}`)
     venueName.setAttribute('target', '_blank')
     venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for " + artistName + " here!"
     eventCard.append(venueName);
+    if(data._embedded.events[i]._embedded.attractions && data._embedded.events[i]._embedded.attractions.length > 0 ) {
+        artistName = data._embedded.events[i]._embedded.attractions[0].name
+        getArtist(artistName, i)
 
-    getArtist(artistName)
-    getMusicVideo(eventCard)
+    }
+    
+
    
    
 }
 
-function getArtist(artistName){
+function getArtist(artistName, itr){
     var requestUrl = "https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistName;
     var artistId;
 
@@ -89,12 +96,18 @@ function getArtist(artistName){
     .then(function(data){
         console.log(data)
          artistId = data.artists[0].idArtist
+         console.log(artistId)
          getMusicVideo(artistId);
+         console.log(itr)
+         appendMusicVidInfo(itr)
+
     
     })
 }
 
-function getMusicVideo(param, eventCard) {
+
+function getMusicVideo(param, ) {
+
     var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`;
     
     fetch(requesturl2)
@@ -106,12 +119,16 @@ function getMusicVideo(param, eventCard) {
 
     .then(function(data){
         console.log(data)
+
+        musicVideoReturn = data
         
 
-        var youtubeVid = document.createElement("p");
+        var youtubeVid =document.createElement("p");
         youtubeVid.textContent = "check out this youtube video for more info!";
+        console.log(eventCard);
+        console.log(youtubeVid);
         eventCard.append(youtubeVid);
-        var youtubeLink = document.createElement("a");
+        var youtubeLink =document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
         youtubeLink.innerHTML = data.mvids[0].strMusicVid;
@@ -129,8 +146,15 @@ function getMusicVideo(param, eventCard) {
         console.log(error)
     })
 }
- getArtist();
- getMusicVideo();
+
+function appendMusicVidInfo(itr) {
+
+
+    
+}
+getAPI();
+
+ 
 
 
 // youtube API and functions above

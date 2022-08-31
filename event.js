@@ -70,25 +70,14 @@ function setEvent(data, i) {
     venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for " + artistName + " here!"
     eventCard.append(venueName);
 
-    getMusicVideo(eventCard)
     getArtist(artistName)
+    getMusicVideo(eventCard)
+   
    
 }
 
-
-// ticketmaster api and functions above
-
-
-// youtube api and functions below
-// var searchArea = function(event){
-//     event.preventDefault();
-//         var artistSearch = search.value.trim();
-//         console.log(artistSearch);
-//  getArtist(artistSearch)   
-// }
-
 function getArtist(artistName){
-    var requestUrl = "https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistName
+    var requestUrl = "https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistName;
     var artistId;
 
     fetch(requestUrl)
@@ -104,10 +93,10 @@ function getArtist(artistName){
     
     })
 }
-// fake
-function getMusicVideo(param, i) {
-    var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`// + param;
-    //console.log(param);
+
+function getMusicVideo(param, eventCard) {
+    var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`;
+    
     fetch(requesturl2)
     .then(function(response){
         console.log(response)
@@ -117,15 +106,19 @@ function getMusicVideo(param, i) {
 
     .then(function(data){
         console.log(data)
+        
 
-        var youtubeVid =document.createElement("p");
-        var youtubeLink =document.createElement("a");
+        var youtubeVid = document.createElement("p");
+        youtubeVid.textContent = "check out this youtube video for more info!";
+        eventCard.append(youtubeVid);
+        var youtubeLink = document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
         youtubeLink.innerHTML = data.mvids[0].strMusicVid;
-        youtubeVid.textContent = "check out this youtube video for more info!";
-        resultsContainer[i].append(youtubeVid);
-        resultsContainer[i].append(youtubeLink);
+        eventCard.append(youtubeLink);
+        
+        
+       
         
         return;
         
@@ -136,8 +129,8 @@ function getMusicVideo(param, i) {
         console.log(error)
     })
 }
-getArtist();
-getMusicVideo();
+ getArtist();
+ getMusicVideo();
 
 
 // youtube API and functions above

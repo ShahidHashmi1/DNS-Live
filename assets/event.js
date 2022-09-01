@@ -36,7 +36,6 @@ function getAPI() {
 function setEvent(data, i) {
    
     var eventCard = document.createElement("div")
-    eventCard.setAttribute('class', 'text-center')
     eventCard.setAttribute('class', 'container')
     eventCard.setAttribute('id', i)
     resultsContainer.append(eventCard)
@@ -46,35 +45,25 @@ function setEvent(data, i) {
     var cardImage = document.createElement("img")
     var cardImageUrl = data._embedded.events[i].images[0].url
     cardImage.setAttribute('src', cardImageUrl)
-    cardImage.setAttribute('class', 'justify-content-center')
     cardImage.setAttribute('height', 250)
     cardImage.setAttribute('width', 350)
+    cardImage.setAttribute('id', 'image')
+    
     eventCard.append(cardImage);
     var showDate = document.createElement("h3")
-    showDate.setAttribute('class', 'text-center')
     var showTime = moment(data._embedded.events[i].dates.start.localTime, "H").format("LT")
     showDate.textContent = moment(data._embedded.events[i].dates.start.localDate, "YYYY-MM-DD").format("[The show is on ]dddd [the] Do [of] MMMM[ at ]") + showTime
     eventCard.append(showDate);
     var venueName = document.createElement("a") 
-    venueName.setAttribute('class', 'text-center')
     var ticketURL = data._embedded.events[i].url?data._embedded.events[i].url:""
     venueName.setAttribute('href', `${ticketURL}`)
     venueName.setAttribute('target', '_blank')
-    venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for " + artistName + " here!"
+    venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for here!"
     eventCard.append(venueName);
     if(data._embedded.events[i]._embedded.attractions && data._embedded.events[i]._embedded.attractions.length > 0 ) {
         artistName = data._embedded.events[i]._embedded.attractions[0].name
         getArtist(artistName, eventCard)
-        
-        
-
-
-
     }
-    
-
-   
-   
 }
 
 function getArtist(artistName, eventCard){
@@ -90,12 +79,7 @@ function getArtist(artistName, eventCard){
         if(data.artists != null && data.artists[0]) {
             artistId = data.artists[0].idArtist
             getMusicVideo(artistId, eventCard);
-        
-
         }
-        
-
-    
     })
 }
 
@@ -103,7 +87,6 @@ function getArtist(artistName, eventCard){
 function getMusicVideo(param, eventCard) {
 
     var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`;
-    // console.log(eventCard)
     
     fetch(requesturl2)
     .then(function(response){
@@ -112,32 +95,25 @@ function getMusicVideo(param, eventCard) {
     })
 
     .then(function(data){
-        // console.log(data)
 
         musicVideoReturn = data
         
 
         var youtubeVid =document.createElement("p");
-        youtubeVid.textContent = "check out this youtube video for more info!";
-        // console.log(eventCard);
-        // console.log(youtubeVid);
         eventCard.append(youtubeVid);
         var youtubeLink =document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
-        youtubeLink.innerHTML = data.mvids[0].strMusicVid;
+        youtubeVid.setAttribute('href', `${youtubeLink}`)
+        youtubeLink.textContent = "check out this youtube video for more info!"
         eventCard.append(youtubeLink);
-        
-        
-       
-        
-        return;
-        
+        var lineBreak = document.createElement("hr")
+        eventCard.append(lineBreak);
 
-        
+        return;
     })
     .catch(function(error){
-        // console.log(error)
+        console.log(error)
     })
 }
 

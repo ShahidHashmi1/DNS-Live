@@ -59,7 +59,7 @@ https://github.com/ShahidHashmi1/DNS-Live
 
 ## Credits
 
-The collaborators on this project included Dimitra Anastasopoulos, and Nick Mason.
+The collaborators on this project included Dimitra Anastasopoulos, Nick Mason, and Shahid Hashmi. 
 
 <br>
 

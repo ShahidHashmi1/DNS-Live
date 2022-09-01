@@ -45,7 +45,7 @@ GIVEN I am searching for a concert
 
 ## MOCK UP
 
-![DNS Live](./)
+![DNS Live](./assets/images/mockup-img.png)
 
 ## SUBMISSION
 

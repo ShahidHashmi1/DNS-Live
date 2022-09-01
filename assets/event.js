@@ -124,6 +124,8 @@ function getMusicVideo(param, eventCard) {
         youtubeLink.setAttribute('target', '_blank')
         youtubeLink.textContent = "check out some content here!"
         eventCard.append(youtubeLink);
+        var lineBreak = document.createElement("hr")
+        eventCard.append(lineBreak);
         
         return;
         

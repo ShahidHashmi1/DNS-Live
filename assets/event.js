@@ -37,7 +37,6 @@ function getAPI() {
 function setEvent(data, i) {
    
     var eventCard = document.createElement("div")
-    eventCard.setAttribute('class', 'text-center')
     eventCard.setAttribute('class', 'container')
     eventCard.setAttribute('id', i)
     resultsContainer.append(eventCard)
@@ -52,16 +51,14 @@ function setEvent(data, i) {
     cardImage.setAttribute('width', 350)
     eventCard.append(cardImage);
     var showDate = document.createElement("h3")
-    showDate.setAttribute('class', 'text-center')
     var showTime = moment(data._embedded.events[i].dates.start.localTime, "H").format("LT")
     showDate.textContent = moment(data._embedded.events[i].dates.start.localDate, "YYYY-MM-DD").format("[The show is on ]dddd [the] Do [of] MMMM[ at ]") + showTime
     eventCard.append(showDate);
     var venueName = document.createElement("a") 
-    venueName.setAttribute('class', 'text-center')
     var ticketURL = data._embedded.events[i].url?data._embedded.events[i].url:""
     venueName.setAttribute('href', `${ticketURL}`)
     venueName.setAttribute('target', '_blank')
-    venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets for " + artistName + " here!"
+    venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets here!"
     eventCard.append(venueName);
     if(data._embedded.events[i]._embedded.attractions && data._embedded.events[i]._embedded.attractions.length > 0 ) {
         artistName = data._embedded.events[i]._embedded.attractions[0].name
@@ -119,7 +116,6 @@ function getMusicVideo(param, eventCard) {
         
 
         var youtubeVid =document.createElement("p");
-        youtubeVid.textContent = "check out this youtube video for more info!";
         // console.log(eventCard);
         // console.log(youtubeVid);
         eventCard.append(youtubeVid);

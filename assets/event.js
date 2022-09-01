@@ -122,7 +122,7 @@ function getMusicVideo(param, eventCard) {
         var youtubeLink =document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
-        youtubeLink.innerHTML = data.mvids[0].strMusicVid;
+        youtubeLink.textContent = "check out some content here!"
         eventCard.append(youtubeLink);
         
         return;

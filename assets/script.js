@@ -2,14 +2,6 @@ var dateInputEl = $('#datepicker');
 var citySearchEl = document.querySelector('#input-text');
 var searchBtn = document.querySelector('#searchBtn')
 
-// Datepicker widget
-// $( function() {
-//   $( "#datepicker" ).datepicker();
-//   $( "#anim" ).on( "change", function() {
-//     $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
-//   });
-// } );
-
 // accordian
 $( function() {
   $( "#accordion" ).accordion();

@@ -103,7 +103,7 @@ function getArtist(artistName, eventCard){
 function getMusicVideo(param, eventCard) {
 
     var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`;
-    console.log(eventCard)
+    // console.log(eventCard)
     
     fetch(requesturl2)
     .then(function(response){
@@ -112,15 +112,15 @@ function getMusicVideo(param, eventCard) {
     })
 
     .then(function(data){
-        console.log(data)
+        // console.log(data)
 
         musicVideoReturn = data
         
 
         var youtubeVid =document.createElement("p");
         youtubeVid.textContent = "check out this youtube video for more info!";
-        console.log(eventCard);
-        console.log(youtubeVid);
+        // console.log(eventCard);
+        // console.log(youtubeVid);
         eventCard.append(youtubeVid);
         var youtubeLink =document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
@@ -137,13 +137,11 @@ function getMusicVideo(param, eventCard) {
         
     })
     .catch(function(error){
-        console.log(error)
+        // console.log(error)
     })
 }
 
 getAPI();
-
- 
 
 
 

@@ -12,8 +12,25 @@ nav {
     border-radius: 5px;
     height: 75px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: white;
+}
+
+ol {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+ul {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px; 
+    color: white;  
 }
 
 div h2 {
@@ -22,7 +39,7 @@ div h2 {
 }
 
 h3 {
-    color:black; 
+    color:#79a7d3; 
     font-family: 'Open Sans', sans-serif;
     font-size: 30px;
 }
@@ -50,6 +67,7 @@ nav h1 {
     text-decoration-color: #ffff;
     font-family: 'Open Sans', sans-serif;
 }
+
 
 .ui-datepicker-header,
 .ui-widget-header,
@@ -96,6 +114,7 @@ nav h1 {
     color: #6883bc;
 }
 
+
 .fa {
     padding: 20px;
     font-size: 30px;
@@ -105,10 +124,30 @@ nav h1 {
     border-radius: 50%;
   }
 
- .linebreak {
-    color: black;
- }
-
  h1 {
     color: #6883bc;
  }
+
+ 
+@media screen and (max-width: 480px){
+    footer 
+}
+
+
+
+
+
+/* and (min-device-width: 375px)
+and (max-device-width:812px)
+and (-webkit-min-device-pixel-ratio: 3)
+{
+    .header {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+}
+.container-image {
+    flex-direction: column;
+    width: 100%;
+  }
+} */

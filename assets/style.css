@@ -40,7 +40,7 @@ footer {
     border-radius: 5px;
     height: 150px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     font-family: 'Open Sans', sans-serif;
 }
 

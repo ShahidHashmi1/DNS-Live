@@ -1,29 +1,35 @@
 var dateInputEl = $('#datepicker');
 var citySearchEl = document.querySelector('#input-text');
 var searchBtn = document.querySelector('#searchBtn')
+var displayDialog = document.querySelector('.displayDialog')
 
 // accordian
 $( function() {
   $( "#accordion" ).accordion();
 } );
 
-var handleSearchFormSubmit = function (event) {
+  $( function showDialog() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+    });
+  })
+
+  function openDialog(dFunc) {
+    console.log(dFunc);
+    $("#dialog").dialog('open');
+  }
+
+
+
+var handleSearchFormSubmit = function (event, dFunc) {
   event.preventDefault();
-  // console.log(document.getElementById("input-text").value)
-
   var searchInputVal = document.getElementById('input-text').value
-  
-  // var dateInputVal = document.getElementById('datepicker').value
-  
 
-  console.log(searchInputVal)
-  // var formatInputVal = document.querySelector('#format-input').value;
-  // var venueInputVal = document.querySelector('#venue-input').value;
-
-  if (!searchInputVal) {
-    console.log('You need a search input value!');
+  if (!searchInputVal || searchInputVal === !null) {
+    openDialog(dFunc)
     return;
   }
+
   localStorage.setItem('input', JSON.stringify(searchInputVal));
   var queryString = './results.html?q=' + searchInputVal
 

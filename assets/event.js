@@ -5,6 +5,7 @@ var youtubeArea =document.getElementById("youtubeVid");
 var artistName;
 var musicVideoReturn;
 var homeBtn = document.getElementById('homeBtn');
+var errorTxt = document.getElementById('errorTxt');
 
 function init(event) {
     event.preventDefault();
@@ -21,14 +22,23 @@ function getAPI() {
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=${cityName}&apikey=${APIkey}`)
 
         .then(function(response) {
-            return response.json()
+            if(response.status !== 200) {
+            errorTxt.textContent = "Invalid city name, please return to the home page to try again!"  
+            } else {
+                return response.json()
+            }
+            
         })
+        
         .then(function(data) {
-          
-            var length = (data._embedded.events.length > 10) ? 10 : data._embedded.events.length
-            for(var i = 0; i < length; i++) {
-                setEvent(data, i)
-                
+            console.log(data);
+            if (data.page.totalElements !== 0) {
+                var length = (data._embedded.events.length > 10) ? 10 : data._embedded.events.length
+                for(var i = 0; i < length; i++) {
+                    setEvent(data, i)
+                } 
+            } else {
+                errorTxt.textContent = "Invalid city name, please return to the home page to try again!"
             }
         }) 
 }
@@ -119,7 +129,7 @@ function getMusicVideo(param, eventCard) {
         // console.log(eventCard);
         // console.log(youtubeVid);
         eventCard.append(youtubeVid);
-        var youtubeLink =document.createElement("a");
+        var youtubeLink = document.createElement("a");
         youtubeLink.setAttribute('href', data.mvids[0].strMusicVid)
         youtubeLink.setAttribute('target', '_blank')
         youtubeLink.textContent = "check out some content here!"

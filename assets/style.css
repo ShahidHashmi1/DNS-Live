@@ -2,6 +2,44 @@
     width: 100%;
 }
 
+.errors {
+    text-align: center;
+}
+
+.homeBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.ui-dialog-titlebar {
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: white;
+    text-align: center;
+    border-width: 2px;
+    border-style: double;
+    border-color: black;
+    background-color: rgb(136, 131, 131);
+    color: black;
+}
+
+.ui-dialog-titlebar-close {
+    background-color: red;
+    height: 20px;
+    width: 20px;
+}
+
+.ui-dialog-content {
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: white;
+    padding-top: 12px;
+    text-align: center;
+    border-width: 2px;
+    border-style: double;
+    border-color: black;
+    background-color: rgb(136, 131, 131);
+    color: black;
+}
+
 body {
     background-color: #8a307f;
     color: #79a7d3;

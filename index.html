@@ -15,11 +15,13 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <link rel="stylesheet" href="./assets/style.css" />
 
-
+    <!-- We can remove blank space like this, it feels a little cleaner when we do -->
 
 </head>
 
 <body>
+    <!-- the class here is header? but your header tag is in the next container.  -->
+    <!-- Keep following html attributes using the - method instead of camel case  -->
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">DNS Live! - Your one-stop shop for your musical weekend plans.</a>
@@ -46,28 +48,36 @@
     <div class="container image">
         <div class="jumbotron mt-3">
             <h1 class="display-4 ">Find a Show in Your City!</h1>
+            <!-- I'm thinking maybe the header tag should be the parent of the container here -->
             <header class="search-button navbar-light bg-light">
                 <form class="form-inline">
                     <input class="form-control col-sm-12 outline-primary" type="search" placeholder="Enter City Here"
                         aria-label="Search" id="input-text">
+                    <!-- Id should be search-btn, ( keep is consistent )  -->
                     <button class="btn btn-outline-primary align-items-center col-sm-12" id="searchBtn"
                         type="submit">Search</button>
                 </form>
             </header>
         </div>
     </div>
-
+    <!-- I would reccomend the style of - in between for classes, this should be display-dialog  -->
     <section class="displayDialog">
+        <!-- I don't think divs use the attirbute title -->
         <div id="dialog" title="Error ">
             <p>Please enter a valid city name in the search bar.</p>
         </div>
     </section>
 
     <section>
+        <!-- If our id is about, do we need the class to be the same? -->
+        <!-- Are we using about in the js or the css? if not, we don't need to give everything a class / id -->
         <div id="about" class="about">
+            <!-- This could use some margin / padding to the left. It would look cleaner -->
             <h3>About Us:</h3>
             <div>
                 <ul>
+                    <!-- Instead of <br> tags here, we can use <p> tags or <li> tags ( considering we are in a ul ) -->
+                    <!-- Use <br> tags sparingly -->
                     <br>Here at DNS Live, our aim is to get everyone out to enjoy some music.</br>
                     <br>We found that people often
                     don't even realize what events are coming to their town, and they miss out on some great shows!
@@ -76,10 +86,14 @@
                     sure to bookmark DNS Live to check out what is coming to you.</br>
                 </ul>
             </div>
+            <!-- Are we using work in the js or the css? if not, we don't need to give everything a class / id -->
             <div id="work">
+                <!-- This could use some margin / padding to the left. It would look cleaner -->
                 <h3>How it Works:</h3>
                 <div>
                     <ol>
+                        <!-- Instead of <br> tags here, we can use <p> tags or <li> tags ( considering we are in a ul ) -->
+                        <!-- Use <br> tags sparingly -->
                         <br>Search for your city.</br>
                         <br>Find a show you're interested in.</br>
                         <br>Check out a link to that artist's most popular YouTube video.</br>
@@ -92,7 +106,9 @@
 
 
     <footer>
+        <!-- Why does this h1 have the class of footer? shouldn't that be on the container itself. Maybe footer-text if you needed a class-->
         <h1 class="footer" id="contact">DNS Inc.</h1>
+        <!-- None of these go anywhere -->
         <a href="#" class="fa fa-facebook"></a>
         <a href="#" class="fa fa-twitter"></a>
         <a href="#" class="fa fa-instagram"></a>

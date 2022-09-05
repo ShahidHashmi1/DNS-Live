@@ -6,6 +6,7 @@
     text-align: center;
 }
 
+/* Should not use camel case, rather use home-btn format */
 .homeBtn {
     display: flex;
     justify-content: center;
@@ -60,6 +61,8 @@ hr {
     min-width: 55%;
 }
 
+/* display : inline-flexbox is not a valid attribute! this does nothing! */
+/* Your element with container class doesn't have any img tags.... this css does nothing */
 .container img {
     display: inline-flexbox;
     align-items: center;
@@ -67,12 +70,15 @@ hr {
     padding: 12px;
 }
 
+/* display : inline-flexbox is not a valid attribute! this does nothing! */
 .container {
     display: inline-flexbox;
     padding-bottom: 10px;
     padding-top: 15px;
 }
 
+/* display : inline-flexbox is not a valid attribute! this does nothing! */
+/* A lot of these were overriden by bootstrap values */
 nav {
     color: #79a7d3;
     width: 100%;
@@ -135,6 +141,7 @@ nav h1 {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* We should try out best to use % values for height / width ( helps with mobile compatibility ) */
 .jumbotron {
     background-image: url(https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
     background-size: 1000px;

@@ -23,6 +23,7 @@ function getAPI() {
 
         .then(function(response) {
             if(response.status !== 200) {
+                // Tab this over
             errorTxt.textContent = "Invalid city name, please return to the home page to try again!"  
             } else {
                 return response.json()
@@ -45,7 +46,14 @@ function getAPI() {
 
 
 function setEvent(data, i) {
-   
+    // Instead of having data._embedded everywhere we could use a variable
+    // var dataEmbedded = data._embedded;
+    // var dataEmbeddedEvent = dataEmbedded.events[i];
+    // var dataEmbeddedVenue = dataEmbedded.venues[i];
+    // Will make our code cleaner
+
+    // non-breaking missing semi-colons at the end of your javascript. I know it works, but let's just get in the habit of having them
+    // In the following lines of code, lets have a line of empty space to make it a little bit clearer.
     var eventCard = document.createElement("div")
     eventCard.setAttribute('class', 'container')
     eventCard.setAttribute('id', i)
@@ -53,6 +61,8 @@ function setEvent(data, i) {
     var eventTitle = document.createElement("h2") 
     eventTitle.textContent = [data._embedded.events[i].name]
     eventCard.append(eventTitle);
+    // Such as this ( empty line of space )
+
     var cardImage = document.createElement("img")
     var cardImageUrl = data._embedded.events[i].images[0].url
     cardImage.setAttribute('src', cardImageUrl)
@@ -60,6 +70,8 @@ function setEvent(data, i) {
     cardImage.setAttribute('height', 250)
     cardImage.setAttribute('width', 350)
     eventCard.append(cardImage);
+    // And this ( makes it a little bit clearer, right? )
+
     var showDate = document.createElement("h3")
     var showTime = moment(data._embedded.events[i].dates.start.localTime, "H").format("LT")
     showDate.textContent = moment(data._embedded.events[i].dates.start.localDate, "YYYY-MM-DD").format("[The show is on ]dddd [the] Do [of] MMMM[ at ]") + showTime
@@ -70,12 +82,14 @@ function setEvent(data, i) {
     venueName.setAttribute('target', '_blank')
     venueName.textContent = data._embedded.events[i]._embedded.venues[0].name + " - get your tickets here!"
     eventCard.append(venueName);
+    // And this ( makes it a little bit clearer, right? )
+    
     if(data._embedded.events[i]._embedded.attractions && data._embedded.events[i]._embedded.attractions.length > 0 ) {
         artistName = data._embedded.events[i]._embedded.attractions[0].name
         getArtist(artistName, eventCard)
         
         
-
+        // Don't forget to clean up all this empty space
 
 
     }
@@ -111,6 +125,8 @@ function getArtist(artistName, eventCard){
 function getMusicVideo(param, eventCard) {
 
     var requesturl2 = `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${param}`;
+
+    // Get rid of console.logs like this before submitting completely
     // console.log(eventCard)
     
     fetch(requesturl2)
@@ -124,7 +140,8 @@ function getMusicVideo(param, eventCard) {
 
         musicVideoReturn = data
         
-
+        // space between the =
+        // Additonally put some empty lines between this large block of code
         var youtubeVid =document.createElement("p");
         // console.log(eventCard);
         // console.log(youtubeVid);
@@ -137,6 +154,7 @@ function getMusicVideo(param, eventCard) {
         var lineBreak = document.createElement("hr")
         eventCard.append(lineBreak);
         
+        // I think a return is implied, but it's fine to have something like this
         return;
         
     })
